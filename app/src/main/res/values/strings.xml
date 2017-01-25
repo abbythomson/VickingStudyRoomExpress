@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">StudyRoomExpress</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="welcome">Welcome!</string>
+    <string name="welcomeText">To Vicking Study Room Express</string>
+    <string name="signUp">Sign Up</string>
+    <string name="listTitle">List of Study Rooms</string>
+    <string name="dirc1">Rooms in  </string>
+    <string name="green">GREEN</string>
+    <string name="red">RED</string>
+    <string name="dirc2">are currently availible</string>
+    <string name="dirc3">while rooms in</string>
+    <string name="dirc4">are currently checked out</string>
+    <string name="emailAlert">Use your Augutana Email when logging in</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="sign_up_button_label">Sign Up</string>
+    <string name="signup_error_message">Please make sure you enter an email address and password!</string>
+    <string name="signup_error_title">Error!</string>
+    <string name="signup_success">Account successfully created! You can now Login.</string>
+    <string name="login_error_message">Please make sure you enter an email address and password!</string>
+    <string name="login_error_title">Error!</string>
+    <string name="login_button_label">Login</string>
+    <string name="sign_up_text">Sign Up!</string>
+    <string name="hint_room_id">Enter Room ID Number</string>
+    <string name="check_in">Check In</string>
+    <string name="check_out">Check Out</string>
+
+</resources>

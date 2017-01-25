@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="AugieBlue">#f51f3acf</color>
+    <color name="AugieGold">#d3b136</color>
+    <color name="red">#f5cf1f3c</color>
+    <color name="green">#f5066f30</color>
+    <color name="lightBlue">#f50e87f1</color>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "925124769865",
+    "firebase_url": "https://vickingstudyroomexpress.firebaseio.com",
+    "project_id": "vickingstudyroomexpress",
+    "storage_bucket": "vickingstudyroomexpress.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925124769865:android:f071970f5617b1f6",
+        "android_client_info": {
+          "package_name": "com.augustanasi.vickingstudyroomexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925124769865-8e8qfqralvs0r7qecm9t3b4mlapjig20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.augustanasi.vickingstudyroomexpress",
+            "certificate_hash": "50114ED7E610CE42268AB55FBB9208C8E82815F3"
+          }
+        },
+        {
+          "client_id": "925124769865-gkd51s401vq1v6s8vmkt1ric7sj8tfd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSGFWcQWI3CyEg1howoWj3HGrImiBEUHY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925124769865-gkd51s401vq1v6s8vmkt1ric7sj8tfd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

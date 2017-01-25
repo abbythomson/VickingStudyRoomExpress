@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.augustanasi.vickingstudyroomexpress.LogInActivity"
+    android:background="@color/AugieBlue">
+
+    <TextView
+        android:text="@string/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/AugieGold"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="@string/emailAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailAlert"
+        android:layout_marginTop="33dp"
+        android:textColor="@color/AugieGold"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textColor="@color/AugieGold"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        tools:text="@string/welcomeText"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_below="@+id/emailText"
+        android:layout_alignLeft="@+id/emailText"
+        android:layout_alignStart="@+id/emailText"
+        android:layout_marginTop="16dp"
+        android:id="@+id/passwordText"
+        android:hint="Password"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:background="@color/common_google_signin_btn_text_dark_default" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_marginTop="23dp"
+        android:id="@+id/emailText"
+        android:hint="Email"
+        android:layout_below="@+id/emailAlert"
+        android:layout_centerHorizontal="true"
+        android:background="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:text="Sign IN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailSignIn"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/passwordText"
+        android:layout_alignRight="@+id/passwordText"
+        android:layout_alignEnd="@+id/passwordText"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText" />
+
+    <Button
+        android:text="Sign Up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUpBt"
+        android:layout_below="@+id/emailSignIn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+
+</RelativeLayout>

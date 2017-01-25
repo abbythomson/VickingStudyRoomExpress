@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/lightBlue">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="343dp" />
+
+    <Button
+        android:text="@string/check_out"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkOut"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:layout_marginBottom="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_weight="0.24"
+        android:hint="@string/hint_room_id"
+        android:layout_above="@+id/checkOut"
+        android:layout_marginBottom="31dp"
+        android:textSize="18sp" />
+
+    <Button
+        android:text="@string/check_in"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkIn"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/checkOut"
+        android:layout_alignBottom="@+id/checkOut"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
