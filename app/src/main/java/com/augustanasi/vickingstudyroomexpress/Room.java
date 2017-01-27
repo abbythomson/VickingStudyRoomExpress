@@ -2,6 +2,7 @@ package com.augustanasi.vickingstudyroomexpress;
 
 /**
  * Created by AbbyThomson on 1/22/2017.
+ * Data Object to hold study room information
  */
 
 public class Room {

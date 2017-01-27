@@ -17,7 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * Created by viola on 1/27/2017.
+ * Created by abby on 1/27/2017.
+ * This class changes a person authoization levle
  */
 
 public class AccessLevelChanger extends Activity{
@@ -43,6 +44,7 @@ public class AccessLevelChanger extends Activity{
                 username = userNameTxt.getText().toString().trim();
                 stringLevel = newLevelTxt.getText().toString().trim();
 
+                //checks that user inputed values
                 if(username.isEmpty()||stringLevel.isEmpty()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(AccessLevelChanger.this);
                     builder.setMessage("Please make sure you enter a username and access level")
@@ -51,6 +53,7 @@ public class AccessLevelChanger extends Activity{
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+                //checks that user sent in valid Auth level
                 else if(!stringLevel.equals("1")&&!stringLevel.equals("2")&&!stringLevel.equals("3")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(AccessLevelChanger.this);
                     builder.setMessage("Please make sure you enter a valid access level")
@@ -65,6 +68,7 @@ public class AccessLevelChanger extends Activity{
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.child("Users").hasChild(username)){
+                                //sets new auth level
                                 ref.child("Users").child(username).child("Access").setValue(stringLevel);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(AccessLevelChanger.this);
                                 builder.setMessage("Success!")

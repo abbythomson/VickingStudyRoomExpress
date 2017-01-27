@@ -55,46 +55,25 @@ public class RoomListActivity extends Activity {
 
         mUserId = mFirebaseUser.getUid();
 
-        final List<String> roomText = new ArrayList<>();
+        final ListView listView = (ListView) findViewById(R.id.roomList);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item,android.R.id.text1);
+        //CustomListAdapter adapter = new CustomListAdapter(this, android.R.layout.activity_list_item,);
+        listView.setAdapter(adapter);
+
         mDatabase.child("Rooms").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("SNAPSHOT", ""+dataSnapshot.getValue(Room.class));
                 Room temp = dataSnapshot.getValue(Room.class);
                 String text = temp.toString();
 
-                roomText.add(temp.toString());
-                Log.d("KEY","--- "+dataSnapshot.getKey());
-                Log.d("ROOM ", "TOSTRING: "+temp.toString());
-
-                //View currentItem = listView.getChildAt(adapter.getPosition(temp.toString()));
-
-                //Log.d("CURRENT ITEM", "View "+currentItem.toString());
-               /*if(temp.availible){
-                   currentItem.setBackgroundColor(Color.GREEN);
-               }
-               else{
-                   currentItem.setBackgroundColor(Color.RED);
-               }*/
+                adapter.add(temp.toString());
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Room temp =  dataSnapshot.getValue(Room.class);
-                roomText.add(temp.toString());
-                //View currentItem = listView.getChildAt(adapter.getPosition(temp.toString()));
-
-                //Log.d("CURRENT ITEM", "View "+currentItem.toString());
-               /*if(temp.availible){
-                   currentItem.setBackgroundColor(Color.GREEN);
-               }
-               else{
-                   currentItem.setBackgroundColor(Color.RED);
-               }*/
-
-                Log.d("KEY","--- "+dataSnapshot.getKey());
-                Log.d("ROOM ", "TOSTRING: "+temp.toString());
+                adapter.add(temp.toString());
             }
 
             @Override
@@ -112,70 +91,12 @@ public class RoomListActivity extends Activity {
 
             }
         });
-        final ListView listView = (ListView) findViewById(R.id.roomList);
-        /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item,android.R.id.text1){
-            public View getView(final int position, View convertView, ViewGroup parent) {
-                 View v = super.getView(position,convertView,parent);
-
-                if(v == null){
-                    LayoutInflater vi;
-                    vi = LayoutInflater.from(getContext());
-                    v = vi.inflate(R.layout.list_item, null);
-
-                }
-                TextView text = (TextView)v.findViewById(R.id.room_des);
-
-
-                if(p!=null){
-                   TextView tt1 = (TextView) v.findViewById(R.id.room_des);
-                    if(p.contains("NOT")){
-                        tt1.setBackgroundColor(Color.RED);
-
-                    }
-
-                }
-             return v;
-         }
-        };*/
-        CustomListAdapter adapter = new CustomListAdapter(this, android.R.layout.activity_list_item,roomText);
-        listView.setAdapter(adapter);
-
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView< ?> parent, View view, int position, long id) {
-                mDatabase.child("Rooms").child(roomIds.get(position))
-                        .equalTo((String) listView.getItemAtPosition(position))
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChildren()) {
-                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                    boolean current = (boolean) firstChild.child("availible").getValue();
-                                    firstChild.getRef().child("availible").setValue(!current);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-            }
-        });
-
-        //setRoomList();
-        //Log.d("TEST", pdk.toString());
-        //Log.d("First",roomList.get(0).toString());
-        //Log.d("CHECK INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
-        //mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").setValue(false);
-        //Log.d("THEN INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
-        //Log.d("First",roomList.get(0).toString());
-
-
-
 
     }
+
+    /**
+     * Used to initail set values in cloud database
+     */
     private void setRoomList(){
 
         Room room232 = new Room(232,4,true,true,"Room232");

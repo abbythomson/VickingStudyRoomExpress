@@ -35,4 +35,6 @@
     <string name="level3des">Level 3 Access equals Default Privleges</string>
     <string name="roomStateDir">To check a room in or out \nenter the Room Id</string>
     <string name="roomIdEx">Example: PDK or Room312</string>
+    <string name="listDescript">List of Study Rooms in the Library</string>
+    <string name="availible">Rooms listed as AVAILIBLE can currently be checked out</string>
 </resources>

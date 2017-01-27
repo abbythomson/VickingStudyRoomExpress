@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by viola on 1/27/2017.
+ * UNUSSED
  */
 
 public class CustomListAdapter extends ArrayAdapter<String> {
@@ -34,16 +35,18 @@ public class CustomListAdapter extends ArrayAdapter<String> {
             mView = vi.inflate(R.layout.list_item, null);
 
         }
-        TextView text = (TextView)v.findViewById(R.id.room_des);
+        String text = items.get(position);
+        if(text!=null){
+            TextView slot = (TextView) mView.findViewById(R.id.room_des);
+            if(slot!=null){
+                slot.setText(text);
+                if(text.contains("NOT")){
+                    slot.setTextColor(Color.RED);
+                }else{
+                    slot.setTextColor(Color.GREEN);
+                }
 
-
-        if(items.get(position)!=null){
-            Log.d("TEXT", items.get(position));
-            text.setText(items.get(position));
-            if(items.get(position).toString().contains("NOT")){
-                text.setTextColor(Color.RED);
             }
-
         }
         return mView;
     }

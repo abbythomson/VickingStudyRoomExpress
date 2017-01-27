@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
  * Created by viola on 1/23/2017.
  */
 
+/**
+ * UNUSSED
+ */
 public class EmailLogIn extends AppCompatActivity {
     protected EditText emailEditText;
     protected EditText passwordEditText;
