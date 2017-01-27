@@ -4,7 +4,7 @@
     <string name="password">Password</string>
     <string name="login">Log In</string>
     <string name="welcome">Welcome!</string>
-    <string name="welcomeText">To Vicking Study Room Express</string>
+    <string name="welcomeText">To Viking Study Room Express</string>
     <string name="signUp">Sign Up</string>
     <string name="listTitle">List of Study Rooms</string>
     <string name="dirc1">Rooms in  </string>
@@ -34,7 +34,7 @@
     <string name="level2des">Level 2 Access equals Circulation Privleges</string>
     <string name="level3des">Level 3 Access equals Default Privleges</string>
     <string name="roomStateDir">To check a room in or out \nenter the Room Id</string>
-    <string name="roomIdEx">Example: PDK or Room312</string>
+    <string name="roomIdEx">Example: PBK or Room312</string>
     <string name="listDescript">List of Study Rooms in the Library</string>
     <string name="availible">Rooms listed as AVAILIBLE can currently be checked out</string>
 </resources>
