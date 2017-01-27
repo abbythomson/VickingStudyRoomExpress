@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/AugieBlue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/AugieGold">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/userNameTXT"
+            android:hint="Username of Person to Change"
+            android:layout_marginTop="126dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="20sp"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_below="@+id/userNameTXT"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rankTXT"
+            android:hint="Access Level tp Be Changed To" />
+
+        <Button
+            android:text="Change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rankTXT"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/levelChangeBtn" />
+
+    </RelativeLayout>
+
+</LinearLayout>

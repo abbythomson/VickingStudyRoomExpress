@@ -1,5 +1,6 @@
 package com.augustanasi.vickingstudyroomexpress;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +21,12 @@ public class CheckInOut extends AppCompatActivity {
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabase;
     private String mUserId;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.check_in_out);
+    }
+
 
 
 }

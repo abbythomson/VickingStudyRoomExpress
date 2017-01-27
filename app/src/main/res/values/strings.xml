@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StudyRoomExpress</string>
+    <string name="app_name">VickingStudyRoomExpress</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Log In</string>
@@ -27,5 +27,10 @@
     <string name="hint_room_id">Enter Room ID Number</string>
     <string name="check_in">Check In</string>
     <string name="check_out">Check Out</string>
-
+    <string name="toRomList">View List of Study Rooms</string>
+    <string name="toCheckInOut">To Circulation View</string>
+    <string name="adminView">To Admin View</string>
+    <string name="level1des">Level 1 Access equals Admin Privileges</string>
+    <string name="level2des">Level 2 Access equals Circulation Privleges</string>
+    <string name="level3des">Level 3 Access equals Default Privleges</string>
 </resources>

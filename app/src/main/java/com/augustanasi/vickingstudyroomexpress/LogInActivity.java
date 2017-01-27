@@ -1,6 +1,7 @@
 package com.augustanasi.vickingstudyroomexpress;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.net.Inet4Address;
+
 public class LogInActivity extends AppCompatActivity {
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
@@ -37,6 +40,7 @@ public class LogInActivity extends AppCompatActivity {
     protected EditText passwordEditText;
     protected Button emailLogInBt;
     protected Button signUpBt;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class LogInActivity extends AppCompatActivity {
                 }
             }
         };
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -114,10 +119,13 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(LogInActivity.this, RoomListActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        String username = mAuth.getCurrentUser().getEmail().split("@")[0];
+                                        mDatabase.child("Users").child(username).child("Access").setValue("3");
+
+
+                                        Intent intent = new Intent(LogInActivity.this, tempDest.class);
                                         startActivity(intent);
+
                                     }else{
                                         AlertDialog.Builder builder = new AlertDialog.Builder(LogInActivity.this);
                                         builder.setMessage(task.getException().getMessage())
@@ -161,7 +169,8 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(LogInActivity.this, RoomListActivity.class);
+                                        Log.d("Transition", "Start Intent");
+                                        Intent intent = new Intent(LogInActivity.this, Transition.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
