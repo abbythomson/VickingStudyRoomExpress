@@ -46,7 +46,6 @@ public class RoomListActivity extends Activity {
 
         roomIds.addAll(Arrays.asList("PDK","Room 232","Room 233","Room 310","Room 311","Room 312","Room 313","Room 314","Room 322","Room 323","Room 324"));
 
-
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -134,11 +133,11 @@ public class RoomListActivity extends Activity {
 
         //setRoomList();
         Room pdk = new Room(240,4,false,true,"PDK");
-        Log.d("TEST", pdk.toString());
+        //Log.d("TEST", pdk.toString());
         //Log.d("First",roomList.get(0).toString());
-        Log.d("CHECK INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
+        //Log.d("CHECK INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
         mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").setValue(false);
-        Log.d("THEN INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
+        //Log.d("THEN INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
         //Log.d("First",roomList.get(0).toString());
 
 
