@@ -123,7 +123,7 @@ public class LogInActivity extends AppCompatActivity {
                                         mDatabase.child("Users").child(username).child("Access").setValue("3");
 
 
-                                        Intent intent = new Intent(LogInActivity.this, tempDest.class);
+                                        Intent intent = new Intent(LogInActivity.this, Transition.class);
                                         startActivity(intent);
 
                                     }else{
