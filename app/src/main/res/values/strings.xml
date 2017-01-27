@@ -33,4 +33,6 @@
     <string name="level1des">Level 1 Access equals Admin Privileges</string>
     <string name="level2des">Level 2 Access equals Circulation Privleges</string>
     <string name="level3des">Level 3 Access equals Default Privleges</string>
+    <string name="roomStateDir">To check a room in or out \nenter the Room Id</string>
+    <string name="roomIdEx">Example: PDK or Room312</string>
 </resources>

@@ -100,7 +100,7 @@ public class Transition extends AppCompatActivity {
         checkInOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Transition.this, tempDest.class);
+                Intent intent = new Intent(Transition.this, ChangeRoomState.class);
                 startActivity(intent);
             }
         });

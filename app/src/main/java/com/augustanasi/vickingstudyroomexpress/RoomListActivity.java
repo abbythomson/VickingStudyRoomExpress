@@ -1,9 +1,12 @@
 package com.augustanasi.vickingstudyroomexpress;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -44,7 +47,7 @@ public class RoomListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
-        roomIds.addAll(Arrays.asList("PDK","Room 232","Room 233","Room 310","Room 311","Room 312","Room 313","Room 314","Room 322","Room 323","Room 324"));
+        roomIds.addAll(Arrays.asList("PDK","Room232","Room233","Room310","Room311","Room312","Room313","Room314","Room322","Room323","Room  324"));
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
@@ -52,88 +55,92 @@ public class RoomListActivity extends Activity {
 
         mUserId = mFirebaseUser.getUid();
 
-        final ListView listView = (ListView) findViewById(R.id.roomList);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1){
-            public View getView(int position, View convertView, ViewGroup parent){
-                View view = super.getView(position,convertView,parent);
-                final TextView text = (TextView) view.findViewById(android.R.id.text1);
+        final List<String> roomText = new ArrayList<>();
+        mDatabase.child("Rooms").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.d("SNAPSHOT", ""+dataSnapshot.getValue(Room.class));
+                Room temp = dataSnapshot.getValue(Room.class);
+                String text = temp.toString();
 
+                roomText.add(temp.toString());
+                Log.d("KEY","--- "+dataSnapshot.getKey());
+                Log.d("ROOM ", "TOSTRING: "+temp.toString());
 
-                mDatabase.child("Rooms").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //View currentItem = listView.getChildAt(adapter.getPosition(temp.toString()));
 
-                    }
+                //Log.d("CURRENT ITEM", "View "+currentItem.toString());
+               /*if(temp.availible){
+                   currentItem.setBackgroundColor(Color.GREEN);
+               }
+               else{
+                   currentItem.setBackgroundColor(Color.RED);
+               }*/
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-                mDatabase.child("Rooms").child(roomIds.get(position)).child("availible").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        boolean isAvailible = dataSnapshot.getValue().equals("true");
-                        if(isAvailible){
-                            text.setTextColor(Color.GREEN);
-                        }
-                        else{
-                            text.setTextColor(Color.RED);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-                return view;
             }
-        };
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Room temp =  dataSnapshot.getValue(Room.class);
+                roomText.add(temp.toString());
+                //View currentItem = listView.getChildAt(adapter.getPosition(temp.toString()));
+
+                //Log.d("CURRENT ITEM", "View "+currentItem.toString());
+               /*if(temp.availible){
+                   currentItem.setBackgroundColor(Color.GREEN);
+               }
+               else{
+                   currentItem.setBackgroundColor(Color.RED);
+               }*/
+
+                Log.d("KEY","--- "+dataSnapshot.getKey());
+                Log.d("ROOM ", "TOSTRING: "+temp.toString());
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        final ListView listView = (ListView) findViewById(R.id.roomList);
+        /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item,android.R.id.text1){
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                 View v = super.getView(position,convertView,parent);
+
+                if(v == null){
+                    LayoutInflater vi;
+                    vi = LayoutInflater.from(getContext());
+                    v = vi.inflate(R.layout.list_item, null);
+
+                }
+                TextView text = (TextView)v.findViewById(R.id.room_des);
+
+
+                if(p!=null){
+                   TextView tt1 = (TextView) v.findViewById(R.id.room_des);
+                    if(p.contains("NOT")){
+                        tt1.setBackgroundColor(Color.RED);
+
+                    }
+
+                }
+             return v;
+         }
+        };*/
+        CustomListAdapter adapter = new CustomListAdapter(this, android.R.layout.activity_list_item,roomText);
         listView.setAdapter(adapter);
 
-       mDatabase.child("Rooms").addChildEventListener(new ChildEventListener() {
-           @Override
-           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               adapter.add((String)dataSnapshot.child("description").getValue());
-           }
 
-           @Override
-           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    adapter.add((String)dataSnapshot.child("description").getValue());
-           }
-
-           @Override
-           public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-           }
-
-           @Override
-           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-           }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView< ?> parent, View view, int position, long id) {
@@ -158,11 +165,10 @@ public class RoomListActivity extends Activity {
         });
 
         //setRoomList();
-        Room pdk = new Room(240,4,false,true,"PDK");
         //Log.d("TEST", pdk.toString());
         //Log.d("First",roomList.get(0).toString());
         //Log.d("CHECK INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
-        mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").setValue(false);
+        //mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").setValue(false);
         //Log.d("THEN INITIAL",mDatabase.child("Rooms").child(roomIds.get(0)).child("availible").getKey());
         //Log.d("First",roomList.get(0).toString());
 
@@ -174,7 +180,7 @@ public class RoomListActivity extends Activity {
 
         Room room232 = new Room(232,4,true,true,"Room232");
         Room room233 = new Room(233,4,true,true,"Room233");
-        Room pdk = new Room(240,4,false,true,"PDK");
+        Room pdk = new Room(240,4,false,true,"PBK");
         Room room310 = new Room(310,1,false,true,"Room310");
         Room room311 = new Room(311,1,false,true,"Room311");
         Room room312 = new Room(312,1,false,true,"Room312");
